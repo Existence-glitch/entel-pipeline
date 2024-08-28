@@ -39,6 +39,8 @@
    ```
 
 ## Project Structure
+
+```
 entel-pipeline/
 ├── .gitignore
 ├── README.md
@@ -81,6 +83,7 @@ entel-pipeline/
     ├── test_data_ingestion.py
     ├── test_preprocessing.py
     └── test_models.py
+```
 
 
 ## Usage
