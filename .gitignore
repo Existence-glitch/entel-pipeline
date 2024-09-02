@@ -1,2 +1,8 @@
 data/
+src/__pycache__/
+src/data/__pycache__/
+src/models/__pycache__/
+src/utils/__pycache__/
+src/visualization/__pycache__/
+tests/__pycache__/
 models/
