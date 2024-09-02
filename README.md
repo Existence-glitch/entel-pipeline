@@ -80,7 +80,7 @@ entel-pipeline/
 │       └── plots.py
 └── tests/
     ├── __init__.py
-    ├── test_data_ingestion.py
+    ├── test_ingestion.py
     ├── test_preprocessing.py
     └── test_models.py
 ```
@@ -107,12 +107,53 @@ Our pipeline processes cybersecurity detection data in JSON format. Each detecti
 ## Pipeline Stages
 [Describe each stage of your pipeline, including data ingestion, preprocessing, embedding generation, and model training]
 
-1. Data Ingestion
-2. Data Preprocessing
-3. Embedding Generation
-4. Indexing and Retrieval
-5. RAG Model Development
-6. Evaluation and Iteration
+### 1. Data Ingestion
+
+The data ingestion stage is responsible for loading the raw cybersecurity detection data into our pipeline. This stage is implemented in the `src/data/ingestion.py` file.
+
+Key features of the data ingestion stage:
+- Reads JSON files containing cybersecurity detection data.
+- Supports ingestion of single files or entire directories.
+- Defines a schema for the data, ensuring consistency and proper data typing.
+- Preprocesses the data to handle potential inconsistencies in the raw data.
+- Creates a PySpark DataFrame for efficient data processing.
+
+The `DataIngestion` class provides the following main methods:
+- `ingest_file(file_path)`: Ingests a single JSON file.
+- `ingest_directory(directory_path)`: Ingests all JSON files in a directory.
+- `create_dataframe(data)`: Creates a PySpark DataFrame from the ingested data.
+- `ingest_and_create_dataframe(path)`: Combines ingestion and DataFrame creation.
+
+### 2. Data Preprocessing
+
+The data preprocessing stage prepares the ingested data for embedding generation and further analysis. This stage is implemented in the `src/data/preprocessing.py` file.
+
+Key features of the data preprocessing stage:
+- Cleans and normalizes text fields.
+- Handles missing values in the dataset.
+- Converts IP addresses to a format suitable for text processing.
+- Combines relevant fields into a single text representation for each record.
+
+The `DataPreprocessor` class provides the following main methods:
+- `preprocess(df)`: Applies all preprocessing steps to the input DataFrame.
+- `clean_text(text)`: Cleans and normalizes individual text fields.
+- `combine_fields(...)`: Combines relevant fields into a single text representation.
+
+Preprocessing steps include:
+1. Text cleaning: Convert to lowercase, remove special characters (preserving important ones for version numbers and CPEs), and remove extra whitespace.
+2. Handling missing values: Fill null values for 'fqdn' and 'cpe' fields.
+3. IP address conversion: Replace dots with underscores in IP addresses.
+4. Port number conversion: Convert 'puerto' (port) to string type for consistency.
+5. Text combination: Create a 'combined_text' field that includes all relevant information from each record.
+
+The preprocessed data is ready for the next stage of the pipeline, which will involve embedding generation.
+
+### 3. Embedding Generation
+### 4. Indexing and Retrieval
+### 5. RAG Model Development
+### 6. Evaluation and Iteration
+
+
 
 ## Models
 [Describe the models used in your pipeline, including any pre-trained models and custom models you've developed]

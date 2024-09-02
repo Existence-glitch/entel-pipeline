@@ -1,8 +1,10 @@
 import os
 import json
+import ast
 from typing import List, Dict, Union
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, ArrayType
+from pyspark.sql.functions import col, when, lit
 
 class DataIngestion:
     def __init__(self, spark: SparkSession = None):
@@ -43,9 +45,39 @@ class DataIngestion:
                     all_data.extend(file_data)
         return all_data
 
+    def preprocess_data(self, data: List[Dict]) -> List[Dict]:
+        def parse_cve(cve):
+            if isinstance(cve, list):
+                return cve
+            elif isinstance(cve, str):
+                try:
+                    return ast.literal_eval(cve)
+                except:
+                    return []
+            else:
+                return []
+
+        def parse_puerto(puerto):
+            try:
+                return int(puerto)
+            except (ValueError, TypeError):
+                return None
+
+        preprocessed_data = []
+        for item in data:
+            preprocessed_item = item.copy()
+            preprocessed_item['cve'] = parse_cve(item.get('cve', []))
+            preprocessed_item['vectores'] = item.get('vectores', [])
+            preprocessed_item['puerto'] = parse_puerto(item.get('puerto'))
+            preprocessed_data.append(preprocessed_item)
+
+        return preprocessed_data
+
     def create_dataframe(self, data: List[Dict]) -> 'pyspark.sql.DataFrame':
         schema = self._define_schema()
-        return self.spark.createDataFrame(data, schema)
+        preprocessed_data = self.preprocess_data(data)
+        df = self.spark.createDataFrame(preprocessed_data, schema)
+        return df
 
     def ingest_and_create_dataframe(self, path: str) -> 'pyspark.sql.DataFrame':
         if os.path.isfile(path):
