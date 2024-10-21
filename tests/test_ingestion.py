@@ -9,7 +9,7 @@ from pyspark.sql.functions import lit
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
 
-from src.data.ingestion import DataIngestion
+from src.utils.ingestion import DataIngestion
 
 class TestDataIngestion(unittest.TestCase):
     @classmethod

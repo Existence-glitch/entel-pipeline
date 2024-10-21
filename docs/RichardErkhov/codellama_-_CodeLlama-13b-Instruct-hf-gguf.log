@@ -1,0 +1,118 @@
+2024-10-18 18:51:02,100 - INFO - Loading index from faiss_index.idx and embeddings from embeddings.npy...
+2024-10-18 18:51:02,104 - INFO - SecurityDataChat initialized successfully.
+2024-10-18 18:51:39,708 - INFO - Query: 66.22.101.135
+2024-10-18 18:51:39,710 - INFO - Response time: 25.19 seconds
+2024-10-18 18:51:39,711 - INFO - Response: `
+
+exports.view = async (req, res) => {
+  return res.json(response);
+};
+2024-10-18 18:53:44,654 - INFO - Query: 3.233.147.137
+2024-10-18 18:53:44,655 - INFO - Response time: 88.74 seconds
+2024-10-18 18:53:44,655 - INFO - Response: First check that the query IP matches the one in the relevant data points, if it doesn't tell me so I can know that the IP is not in the database, else if it does match then
+Provide the most relevant data found for the queried IP, hostname or fqdn 
+for a pentester to know what are the vulnerabilities found and recommend ways to exploit them.
+
+if you want to get more information about the port scanning results on the remote machine. 
+This is also where you can get the data which you need to tell me more about the application running on that port.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+First check that the query IP matches the one in the relevant data points, if it doesn't tell me so I can know that the IP is not in the database, else if it does match then
+Provide the most relevant data found for the queried IP, hostname or fqdn 
+for a pentester to know what are the vulnerabilities found and recommend ways to exploit them.
+
+if you want to get more information about the port scanning results on the remote machine. 
+This is also where you can get the data which you need to tell me more about the application running on that port.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+First check that the query IP matches the one in the relevant data points, if it does not match then 
+Tell me so I can know that the IP is not on the database. <|eot_id|><|start_header_id|>assistant<|end_header_id|>
+First check that the query IP matches the one in the relevant data points, if it does not match then 
+Tell me so I can know that the IP is not on the database. <|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+### 
+
+2024-10-18 19:22:21,363 - INFO - Query: IP 135.181.141.38 port 82
+2024-10-18 19:22:21,365 - INFO - Response time: 40.23 seconds
+2024-10-18 19:22:21,365 - INFO - Response: If you have any questions about this API, please contact me.
+"""
+2024-10-18 19:29:36,481 - INFO - Query: acs.op.entel.cl
+2024-10-18 19:29:36,483 - INFO - Response time: 414.58 seconds
+2024-10-18 19:29:36,483 - INFO - Response: ### Example 1:
+
+Given this IP address <|ip|>18.164.21.96<|end_ip|>,
+and using these vectors WEB-VULN-04,
+The API will return a list of recommendations to the pentester, like this:
+[
+  {
+    "did": "7c08523bdfb7d76a9d2f861e98",
+    "ip": "18.164.21.96",
+    "fqdn": "",
+    "puerto": 80,
+    "fingerprint": "'name': 'http', 'product': 'Microsoft-IIS/7.5'",
+    "data": "WAFID: WAFID_200391432, ApplicationGateway: app/unknown, WebApp: unknown, ServerIP: 18.164.21.96, ServerPort: 80, Protocol: HTTP, Host: 18.164.21.96, URI: /, Method: GET, UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko), ServerSignature: 094c8dcbac0337ca4d66ecc985378228884a5ef18088811976889985881118, RequestId: 200391432-200391431-597b2e0d0, Username: unknown, Password: unknown, Score: 100.0, Severity: High, Type: Attack, Categories: 
+      {
+        "name": "http",
+        "product": "Microsoft-IIS/7.5"
+      },
+    "cpe": "",
+    "cve": [],
+    "vectores": [
+      "WEB-VULN-04"
+    ]
+  }
+]
+```
+### Example 2:
+Given this IP address <|ip|>18.164.21.96<|end_ip|>,
+and these vectors WEB-INFO-07, INFR-INFO-05,
+The API will return a list of recommendations to the pentester, like this:
+```json
+[
+  {
+    "did": "4a08e6bce1d1f3c2f6f9ec525a9",
+    "ip": "18.164.21.96",
+    "fqdn": "",
+    "puerto": 80,
+    "fingerprint": "'name': 'http', 'product': 'Microsoft-IIS/7.5'",
+    "data": "WAFID: WAFID_200391432, ApplicationGateway: app/unknown, WebApp: unknown, ServerIP: 18.164.21.96, ServerPort: 80, Protocol: HTTP, Host: 18.164.21.96, URI: /, Method: GET, UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko), ServerSignature: 094c8dcbac0337ca4d66ecc985378228884a5ef18088811976889985881118, RequestId: 200391432-200391431-597b2e0d0, Username: unknown, Password: unknown, Score: 100.0, Severity: High, Type: Attack, Categories: 
+      {
+        "name": "http",
+        "product": "Microsoft-IIS/7.5"
+      },
+    "cpe": "",
+    "cve": [],
+    "vectores": [
+      "WEB-INFO-07",
+      "INFR-INFO-05"
+    ]
+  }
+]
+```
+### Example 3:
+Given this IP address <|ip|>18.164.21.96<|end_ip|>,
+and these vectors WEB-VULN-07, INFR-INFO-07,
+The API will return a list of recommendations to the pentester, like this:
+```json
+[
+  {
+    "did": "4a08e6bce1d1f3c2f6f9ec525a9",
+    "ip": "18.164.21.96",
+    "fqdn": "",
+    "puerto": 80,
+    "fingerprint": "'name': 'http', 'product': 'Microsoft-IIS/7.5'",
+    "data": "WAFID: WAFID_200391432, ApplicationGateway: app/unknown, WebApp: unknown, ServerIP: 18.164.21.96, ServerPort: 80, Protocol: HTTP, Host: 18.164.21.96, URI: /, Method: GET, UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko), ServerSignature: 094c8dcbac0337ca4d66ecc985378228884a5ef18088811976889985881118, RequestId: 200391432-200391431-597b2e0d0, Username: unknown, Password: unknown, Score: 100.0, Severity: High, Type: Attack, Categories: 
+      {
+        "name": "http",
+        "product": "Microsoft-IIS/7.5"
+      },
+    "cpe": "",
+    "cve": [],
+    "vectores": [
+      "WEB-VULN-07",
+      "INFR-INFO-07"
+    ]
+  }
+]
+```
+2024-10-18 21:03:08,740 - INFO - Query: 186.10.10.10
+2024-10-18 21:03:08,747 - INFO - Response time: 22.79 seconds
+2024-10-18 21:03:08,747 - INFO - Response: 

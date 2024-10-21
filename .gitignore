@@ -5,4 +5,7 @@ src/models/__pycache__/
 src/utils/__pycache__/
 src/visualization/__pycache__/
 tests/__pycache__/
-models/
+backups/
+src/data/LLM_model.log
+src/data/embeddings.npy
+src/data/faiss_index.idx
