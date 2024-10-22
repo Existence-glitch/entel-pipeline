@@ -9,7 +9,7 @@ tracemalloc.start()
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
 
-from src.utils.preprocessing import DataPreprocessor
+from src.data.preprocessing import DataPreprocessor
 
 class TestDataPreprocessor(unittest.TestCase):
     @classmethod
